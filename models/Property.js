@@ -28,6 +28,10 @@ let propertySchema = new Schema(
             type: String,
             default: 'Available'
         },
+        location: {
+            type: String,
+            default: 'maps.google.com'
+        },
         attributes: {
             type: String,
             default: 'Area:5 Acres,Flats:100,Towers:2,Wings:3'
