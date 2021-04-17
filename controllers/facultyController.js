@@ -53,6 +53,22 @@ let getPropertyByType = (req, res) => {
         })
 }// end get all blogs
 
+let getLatestProperty = (req, res) => {
+    PropertyModel.find({isLatest: true})
+        .lean()
+        .exec((err, result) => {
+            if (err) {
+                console.log(err)
+                res.send(err)
+            } else if (result == undefined || result == null || result == '') {
+                console.log('No Property Details Found')
+                res.send("No Property Details Found")
+            } else {
+                res.send(result)
+            }
+        })
+}// end get all blogs
+
 let getAllPropertyInfo = (req, res) => {
     PropertyModel.find({})
         .lean()
@@ -178,7 +194,8 @@ let createProperty = (req, res) => {
                     description: req.body.description,
                     image: req.body.image,
                     amenities: req.body.amenities,
-                    brochure: req.body.brochure
+                    brochure: req.body.brochure,
+                    isLatest: req.body.isLatest
                 }) // end new blog model
 
                 newProperty.save((err, result) => {
@@ -207,7 +224,8 @@ let createProperty = (req, res) => {
                     description: req.body.description,
                     image: req.body.image,
                     amenities: req.body.amenities,
-                    brochure: req.body.brochure
+                    brochure: req.body.brochure,
+                    isLatest: req.body.isLatest
                 }) // end new blog model
 
                 newProperty.save((err, result) => {
@@ -226,6 +244,22 @@ let createProperty = (req, res) => {
     //let tags = (req.body.tags != undefined && req.body.tags != null && req.body.tags != '') ? req.body.tags.split(',') : []
     //newBlog.tags = tags
 }
+
+let editProperty = (req, res) => {
+
+    let options = req.body;
+    PropertyModel.update({ 'id': req.params.id }, options).exec((err, result) => {
+        if (err) {
+            console.log(err)
+            res.status(400).send("error in editing details")
+        } else if (result === null || result === undefined) {
+            res.status(404).send("no user found");
+        } else {
+            res.send(result)
+        }
+    });// end user model update
+
+}// end editUser
 
 let createFaculty = (req, res) => {
 
@@ -300,5 +334,7 @@ module.exports = {
     getCeeFacultyInfo: getCeeFacultyInfo,
     getMsntFacultyInfo: getMsntFacultyInfo,
     deleteFaculty: deleteFaculty,
-    deleteProperty: deleteProperty
+    deleteProperty: deleteProperty,
+    editProperty: editProperty,
+    getLatestProperty: getLatestProperty
 }

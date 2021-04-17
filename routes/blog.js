@@ -53,6 +53,8 @@ let setRouter = (app) => {
 
     app.get(baseUrl + '/property/all', facultyController.getAllPropertyInfo);
 
+    app.get(baseUrl + '/property/latest', facultyController.getLatestProperty);
+
     //app.get(baseUrl+'/view/:blogId',blogController.viewByBlogId);
 
     //app.get(baseUrl+'/view/by/author/:author',blogController.viewByAuthor);
@@ -94,6 +96,8 @@ let setRouter = (app) => {
     });
     // app.post(baseUrl + '/login', authenticationController.login);
     //app.get(baseUrl+'/:blogId/count/view',blogController.increaseBlogView);
+
+    app.put(baseUrl + '/editproperty/:id',facultyController.editProperty);
 
 
 

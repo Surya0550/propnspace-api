@@ -51,6 +51,10 @@ let propertySchema = new Schema(
         brochure: {
             type: String,
             default: 'brochure.pdf'
+        },
+        isLatest: {
+            type: Boolean,
+            default: false
         }
     }
 )
