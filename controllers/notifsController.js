@@ -128,7 +128,7 @@ let mailFunction = (req, res) => {
   
     let HelperOptions = {
   
-        from: '"Prop N Space" <sai.suryateja14@gmail.com>',
+        from: '<propnspace@outlook.com>',
         to: mailList,
         subject: "New Enquiry!",
         text: "Customer Message: " + req.query.body + "/n" + " Customer Email: " + req.query.custemail + " Customer Phone Number: " + req.query.number,
