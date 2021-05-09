@@ -108,12 +108,12 @@ let mailFunction = (req, res) => {
 
     let transporter = nodemailer.createTransport({
 
-        service: "gmail",
+        service: "hotmail",
         secure: false,
         port: 25,
         auth: {
-            user: "calendarapp50@gmail.com",
-            pass: "calendarapp#1"
+            user: "propnspace@outlook.com",
+            pass: "Pramu@raj0106"
         },
         tls: {
             rejectUnauthorized: false
